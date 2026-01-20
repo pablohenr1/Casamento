@@ -1,108 +1,242 @@
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+:root {
+    --primary-gold: #c5a059;      /* Dourado elegante */
+    --primary-gold-dark: #a68545; /* Dourado escuro para hover */
+    --bg-cream: #fdfbf7;          /* Fundo creme */
+    --text-dark: #4a4a4a;         /* Texto cinza escuro */
+    --text-light: #888;           /* Texto cinza claro */
+    --white: #ffffff;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Lato', sans-serif;
+}
 
-body { background-color: #f4f4f9; color: #333; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
+body {
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+}
+
+/* --- HERO HEADER --- */
 header {
-    background-color: #ff6f61; /* Cor destaque */
-    color: white;
+    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://img.freepik.com/fotos-gratis/fundo-de-textura-de-papel-branco_1083-178.jpg'); /* Textura sutil */
+    padding: 4rem 1rem;
     text-align: center;
-    padding: 2rem 1rem;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
 }
 
-.subtitle { font-size: 0.9rem; opacity: 0.9; margin-top: 5px; }
-
-main {
-    max-width: 1000px;
-    margin: 30px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Grid responsivo */
-    gap: 20px;
-    padding: 0 20px;
+.date-badge {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
 }
 
-/* Card do Presente */
-.card {
-    background: white;
-    border-radius: 12px;
+header h1 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.amp { color: var(--primary-gold); font-style: italic; }
+
+.subtitle {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    font-size: 1rem;
+    color: var(--text-dark);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- FILTROS --- */
+.filters {
+    text-align: center;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin-top: 20px;
 }
-
-.card:hover { transform: translateY(-5px); }
-
-.card h3 { font-size: 1.1rem; margin-bottom: 5px; color: #444; }
-.card .tag { font-size: 0.8rem; color: #888; background: #eee; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 15px;}
-
-.btn-presentear {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 6px;
+.filter-label { font-family: var(--font-serif); margin-right: 10px; color: var(--text-light); }
+.filter-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: 600;
-    width: 100%;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    color: var(--text-light);
 }
-
-.btn-presentear:hover { background-color: #218838; }
-
-/* Estilo quando está reservado */
-.card.reservado { opacity: 0.7; background-color: #e9ecef; }
-.card.reservado .btn-presentear {
-    background-color: #6c757d;
-    cursor: not-allowed;
-}
-
-/* Modal */
-.hidden { display: none !important; }
-.modal {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: flex; align-items: center; justify-content: center;
-}
-.modal-content { background: white; padding: 30px; border-radius: 10px; text-align: center; width: 90%; max-width: 400px; }
-input { width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #ddd; border-radius: 5px; }
-.modal-actions { display: flex; gap: 10px; justify-content: center; }
-button { padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer; }
-.primary { background: #ff6f61; color: white; }
-.secondary { background: #ddd; }
-
-/* Atualize a classe .card e adicione a .card-img */
-.card {
+.filter-btn:hover, .filter-btn.active {
+    border-color: var(--primary-gold);
+    color: var(--primary-gold);
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+}
+
+/* --- GRID DE PRESENTES --- */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 8px; /* Cantos levemente arredondados */
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.03); /* Sombra super suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.02);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden; /* Importante para a imagem não vazar */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15); /* Sombra dourada ao passar o mouse */
 }
 
 .card-img {
     width: 100%;
-    height: 180px; /* Altura fixa para ficarem iguais */
-    object-fit: cover; /* Corta a imagem para preencher sem esticar */
-    background-color: #f0f0f0;
+    height: 220px;
+    object-fit: cover;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .card-content {
-    padding: 20px;
-    flex-grow: 1; /* Empurra o botão para baixo */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
 }
 
-/* Destaque para o Admin ver quem comprou */
-.admin-info {
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-weight: bold;
-    border: 1px solid #ffeeba;
+.card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin: 10px 0;
+    min-height: 50px; /* Alinha os títulos */
+}
+
+.tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-gold);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.btn-presentear {
+    background-color: var(--primary-gold);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: auto; /* Empurra o botão pro final */
+}
+
+.btn-presentear:hover {
+    background-color: var(--primary-gold-dark);
+}
+
+.card.reservado { opacity: 0.6; pointer-events: none; filter: grayscale(100%); }
+.card.reservado .btn-presentear { background-color: #ccc; content: "Reservado"; }
+
+/* --- MODAL --- */
+.hidden { display: none !important; }
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255,255,255,0.8); /* Fundo branco translúcido chique */
+    backdrop-filter: blur(5px);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 0;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    overflow: hidden;
     text-align: center;
+    border: 1px solid #eee;
+}
+
+.modal-header {
+    background-color: var(--bg-cream);
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+.modal-header h3 { font-family: var(--font-serif); color: var(--text-dark); }
+.close-modal {
+    position: absolute; right: 20px; top: 20px; font-size: 24px; cursor: pointer; color: #aaa;
+}
+
+.modal-body { padding: 30px; }
+.item-name-confirm {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--primary-gold);
+    margin: 15px 0 25px 0;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    margin-bottom: 20px;
+    outline: none;
+    transition: border 0.3s;
+}
+input:focus { border-color: var(--primary-gold); }
+
+.btn-primary {
+    background-color: var(--primary-gold);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 600px) {
+    header h1 { font-size: 2.5rem; }
+    main { grid-template-columns: 1fr; }
 }
