@@ -80,42 +80,275 @@ window.abrirModal = (id) => {
 
 // --- SCRIPT ATUALIZADO COM IMAGENS ---
 // Rode window.semearBanco() no console DEPOIS de limpar o banco antigo
+// --- SCRIPT PARA POPULAR O BANCO (LISTA ATUALIZADA DO CSV) ---
 window.semearBanco = async () => {
-    // DICA: Para ficar bonito, substitua essas URLs por links de imagens reais (Google Imagens, Magalu, etc)
-    // Ou baixe as imagens, coloque numa pasta "img" e use: imagem: "img/batedeira.jpg"
-    
-    const presentesReais = [
-        { 
-            nome: "Televisão", 
-            categoria: "Sala", 
+    // Lista baseada no seu arquivo "Lista de Casamento.xlsx - Planilha2.csv"
+    const listaAtualizada = [
+        // --- SALA ---
+        {
+            nome: "Televisão",
+            categoria: "SALA",
             status: "livre",
-            imagem: "Imagens/Sala/Tv.jpg" 
+            imagem: "Imagens/Sala/Tv.jpg"
         },
-        { 
-            nome: "Sofá", 
-            categoria: "Sala", 
+        {
+            nome: "Sofá (Entre em Contato para confirmar as medidas!)", // Dica: Edite este nome no Firebase depois se quiser tirar o parenteses
+            categoria: "SALA",
             status: "livre",
-            imagem: "Imagens/Sala/Sofa.jpg" 
+            imagem: "Imagens/Sala/Sofa.jpg"
         },
-        { 
-            nome: "Jogo de Panelas", 
-            categoria: "Cozinha", 
+        {
+            nome: "Cortinas",
+            categoria: "SALA",
             status: "livre",
-            imagem: "https://img.freepik.com/fotos-gratis/panelas-de-cozinha_144627-40455.jpg?size=626&ext=jpg"
+            imagem: "Imagens/Sala/Cortina.jpg"
         },
-        { 
-            nome: "Aspirador de Pó", 
-            categoria: "Sala", 
+        {
+            nome: "Carpete",
+            categoria: "SALA",
             status: "livre",
-            imagem: "https://img.freepik.com/fotos-premium/aspirador-de-po-domestico-moderno-em-fundo-branco_410516-2917.jpg?size=626&ext=jpg"
+            imagem: "Imagens/Sala/CarpeteSala.jpg"
         },
-        // Adicione os outros itens seguindo esse modelo...
+        {
+            nome: "Almofadas Decorativas",
+            categoria: "SALA",
+            status: "livre",
+            imagem: "Imagens/Sala/Almofadas.jpg"
+        },
+        {
+            nome: "Manta para Sofá",
+            categoria: "SALA",
+            status: "livre",
+            imagem: "Imagens/Sala/MantaSofa.jpg"
+        },
+
+        // --- QUARTO ---
+        {
+            nome: "Jogo de Cama",
+            categoria: "QUARTO",
+            status: "livre",
+            imagem: "Imagens/Quarto/JogoCama.jpg"
+        },
+        {
+            nome: "Guarda-Roupa",
+            categoria: "QUARTO",
+            status: "livre",
+            imagem: "Imagens/Quarto/GuardaRoupa.jpg"
+        },
+        {
+            nome: "Cobertor ou Manta",
+            categoria: "QUARTO",
+            status: "livre",
+            imagem: "Imagens/Quarto/Cobertor.jpg"
+        },
+        {
+            nome: "Ferro de Passar",
+            categoria: "QUARTO",
+            status: "livre",
+            imagem: "Imagens/Quarto/Ferro.jpg"
+        },
+
+        // --- COZINHA ---
+        {
+            nome: "Microondas",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Microondas"
+        },
+        {
+            nome: "Forno Elétrico",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Forno"
+        },
+        {
+            nome: "Processador de Alimentos",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Processador"
+        },
+        {
+            nome: "Liquidificador",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Liquidificador"
+        },
+        {
+            nome: "Jogo de Panelas Completo",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Jogo+de+Panelas"
+        },
+        {
+            nome: "Tábuas de Corte",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Tábuas"
+        },
+        {
+            nome: "Batedeira",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Batedeira"
+        },
+        {
+            nome: "Jogo de Pratos",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Jogo+de+Pratos"
+        },
+        {
+            nome: "Kit de Facas Completo",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Facas"
+        },
+        {
+            nome: "Jogo de Copos",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Copos"
+        },
+        {
+            nome: "Jogo de Taças",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Taças"
+        },
+        {
+            nome: "Jogo de Talheres",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Talheres"
+        },
+        {
+            nome: "Potes Herméticos",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Potes"
+        },
+        {
+            nome: "Escorredor de Louças",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Escorredor"
+        },
+        {
+            nome: "Garrafa de Café",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Garrafa+Café"
+        },
+        {
+            nome: "Panos de Prato e Luva",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Panos+e+Luva"
+        },
+        {
+            nome: "Kit Utensílios (Silicone)",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Utensílios"
+        },
+        {
+            nome: "Abridor de Latas/Garrafas",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Abridor"
+        },
+        {
+            nome: "Ralador e Peneiras",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Ralador"
+        },
+        {
+            nome: "Formas de Bolo",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Formas"
+        },
+        {
+            nome: "Travessas de Vidro",
+            categoria: "COZINHA",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/218838/FFF?text=Travessas"
+        },
+
+        // --- BANHEIRO ---
+        {
+            nome: "Toalhas de Rosto",
+            categoria: "BANHEIRO",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/007bff/FFF?text=Toalhas+Rosto"
+        },
+        {
+            nome: "Toalhas de Banho",
+            categoria: "BANHEIRO",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/007bff/FFF?text=Toalhas+Banho"
+        },
+        {
+            nome: "Cesto de Roupa e Lixeira",
+            categoria: "BANHEIRO",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/007bff/FFF?text=Cesto+e+Lixeira"
+        },
+        {
+            nome: "Jogo de Tapetes (Box/Pia)",
+            categoria: "BANHEIRO",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/007bff/FFF?text=Tapetes"
+        },
+        {
+            nome: "Kit Sobre a Pia",
+            categoria: "BANHEIRO",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/007bff/FFF?text=Kit+Pia"
+        },
+        {
+            nome: "Escova Sanitária",
+            categoria: "BANHEIRO",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/007bff/FFF?text=Escova"
+        },
+
+        // --- ÁREA DE SERVIÇO ---
+        {
+            nome: "Vassoura, Rodo e Pá",
+            categoria: "ÁREA SERV.",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/6c757d/FFF?text=Limpeza"
+        },
+        {
+            nome: "Baldes e Bacias",
+            categoria: "ÁREA SERV.",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/6c757d/FFF?text=Baldes"
+        },
+        {
+            nome: "Tanquinho",
+            categoria: "ÁREA SERV.",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/6c757d/FFF?text=Tanquinho"
+        },
+        {
+            nome: "Tábua de Passar",
+            categoria: "ÁREA SERV.",
+            status: "livre",
+            imagem: "https://placehold.co/600x400/6c757d/FFF?text=Tábua+Passar"
+        }
     ];
 
-    for (const item of presentesReais) {
+    let contador = 0;
+    for (const item of listaAtualizada) {
         await addDoc(collection(db, "presentes"), item);
+        contador++;
+        console.log(`Enviado: ${item.nome}`);
     }
-    alert("Presentes com fotos cadastrados!");
+    
+    alert(`Sucesso! ${contador} itens da planilha foram cadastrados.`);
 };
 
 carregarLista();
