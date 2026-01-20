@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Presentes de Casamento | Pablo & Kathleen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>Lista de Presentes 🎁</h1>
+        <p>Pablo & Kathleen</p>
+        <p class="subtitle">Escolha um item para nos presentear e clique em "Presentear".</p>
+    </header>
+
+    <main id="lista-presentes">
+        <p class="carregando">Carregando lista...</p>
+    </main>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Oba! Muito obrigado! 🎉</h3>
+            <p>Qual seu nome para sabermos quem deu?</p>
+            <input type="text" id="nome-convidado" placeholder="Ex: Tio João e Tia Maria">
+            <div class="modal-actions">
+                <button id="btn-cancelar" class="secondary">Cancelar</button>
+                <button id="btn-confirmar" class="primary">Confirmar Reserva</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
