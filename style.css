@@ -21,11 +21,7 @@ body {
     /* 2. As imagens das flores nos cantos (Estilo Marsala) */
     /* Usei links de exemplo que combinam perfeitamente. 
        Se você tiver os arquivos PNG exatos do seu designer, pode trocar as URLs */
-    background-image: 
-        /* Flor Canto Superior Esquerdo */
-        url('https://i.imgur.com/8Q6V8Zc.png'),
-        /* Flor Canto Inferior Direito */
-        url('https://i.imgur.com/0yYq4xS.png');
+  
 
     /* 3. Onde cada imagem fica */
     background-position: 
