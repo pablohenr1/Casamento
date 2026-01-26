@@ -161,11 +161,12 @@ window.semearBanco = async () => {
         { nome: "Travessas de Vidro", categoria: "COZINHA", status: "livre", imagem: "Imagens/Cozinha/Travessas.jpg" },
 
         // --- BANHEIRO ---
-        { nome: "Toalhas de Rosto/Banho", categoria: "BANHEIRO", status: "livre", imagem: "Imagens/Banheiro/Toalhas de Rosto.jpg" },
+        
         { nome: "Cesto de Roupa e Lixeira", categoria: "BANHEIRO", status: "livre", imagem: "Imagens/Banheiro/Cesto.jpg" },
         { nome: "Jogo de Tapetes", categoria: "BANHEIRO", status: "livre", imagem: "Imagens/Banheiro/Jogo de Tapetes.jpg" },
         { nome: "Kit Sobre a Pia", categoria: "BANHEIRO", status: "livre", imagem: "Imagens/Banheiro/Porta SaboneteEscova.jpg" },
         { nome: "Escova Sanitária", categoria: "BANHEIRO", status: "livre", imagem: "Imagens/Banheiro/EscovaSanitaria.jpg" },
+        { nome: "Toalhas de Banho", categoria: "BANHEIRO", status: "livre", imagem: "Imagens/Banheiro/ToalhasBanho.jpg" },
 
         // --- ÁREA DE SERVIÇO ---
         { nome: "Vassoura, Rodo e Pá", categoria: "ÁREA SERV.", status: "livre", imagem: "Imagens/AreaServ/VassouraRodoPa.jpg" },

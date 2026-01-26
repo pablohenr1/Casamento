@@ -3,55 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Presentes de Casamento | Pablo & Kathleen</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Lista de Presentes | Kathleen & Pablo </title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <span class="date-badge">19 . 09 . 2026</span>
-            <h1>Pablo <span class="amp">&</span> Kathleen</h1>
-            <p class="subtitle">Nossa Lista de Presentes</p>
-            <p class="intro-text">Ficaremos muito felizes em compartilhar este momento com você.<br>Escolha um item abaixo para nos presentear.</p>
+    <header class="hero">
+        <div class="hero-overlay"></div> <div class="hero-content">
+            <span class="date">19 . 09 . 2026</span>
+            <h1 class="main-title">Kathleen <span class="amp">&</span> Pablo</h1>
+            <p class="subtitle">Celebrando nosso amor</p>
         </div>
     </header>
 
-    <div class="filters">
-        <span class="filter-label">Filtrar por:</span>
+    <nav class="filters">
+        <span class="filter-label" style="width:100%; text-align:center; display:block; margin-bottom:10px; color:var(--text-light); font-size:0.8rem; text-transform:uppercase;">Filtrar lista por:</span>
         <button class="filter-btn active" onclick="filtrar('todos')">Todos</button>
         <button class="filter-btn" onclick="filtrar('Cozinha')">Cozinha</button>
         <button class="filter-btn" onclick="filtrar('Quarto')">Quarto</button>
         <button class="filter-btn" onclick="filtrar('Sala')">Sala</button>
-    </div>
+        <button class="filter-btn" onclick="filtrar('Banheiro')">Banheiro</button>
+        <button class="filter-btn" onclick="filtrar('ÁREA SERV.')">Área Serviço</button>
+    </nav>
 
     <main id="lista-presentes">
-        <div class="loading">Carregando presentes com amor... ❤️</div>
+        <div class="loading">Carregando lista com carinho... 🌿</div>
     </main>
 
     <footer>
-        <p>Feito com carinho pelos noivos</p>
+        <p>Com amor, Pablo & Kathleen ❤️</p>
     </footer>
 
     <div id="modal" class="modal hidden">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3>Presentear</h3>
-                <span class="close-modal" id="btn-cancelar">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>Que alegria! Você escolheu nos dar este presente.</p>
-                <p class="item-name-confirm" id="nome-item-modal">Nome do Item</p>
-                
-                <label>Como devemos te agradecer?</label>
-                <input type="text" id="nome-convidado" placeholder="Digite seu nome (Ex: Tio João)">
-                
-                <button id="btn-confirmar" class="btn-primary">Confirmar Reserva</button>
-            </div>
+            <span class="close-modal" id="btn-cancelar">&times;</span>
+            <h3 class="modal-title">Muito Obrigado!</h3>
+            <p>Você vai presentear: <br><strong id="nome-item-modal" class="item-highlight">Item</strong></p>
+            
+            <p class="instruction">Por favor, escreva seu nome para sabermos quem deu:</p>
+            <input type="text" id="nome-convidado" placeholder="Ex: Família Silva">
+            
+            <button id="btn-confirmar" class="btn-primary">Confirmar Presente 🎁</button>
         </div>
     </div>
 

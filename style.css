@@ -1,242 +1,326 @@
 :root {
-    --primary-gold: #c5a059;      /* Dourado elegante */
-    --primary-gold-dark: #a68545; /* Dourado escuro para hover */
-    --bg-cream: #fdfbf7;          /* Fundo creme */
-    --text-dark: #4a4a4a;         /* Texto cinza escuro */
-    --text-light: #888;           /* Texto cinza claro */
+    /* Paleta Marsala & Rosé (Baseada no Convite) */
+    --marsala: #7A2E39;        /* Vinho do texto principal */
+    --rose-gold: #C48B90;      /* Tom rosado dos detalhes */
+    --bg-cream: #FFFAF0;       /* A cor exata do papel do convite (Floral White) */
+    --text-dark: #4A4A4A;
+    --text-light: #8C8C8C;
     --white: #ffffff;
+    
+    /* Fontes do Convite */
+    --font-cursiva: 'Great Vibes', cursive;
     --font-serif: 'Playfair Display', serif;
-    --font-sans: 'Lato', sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
+    /* 1. A cor de fundo sólida (o papel do convite) */
     background-color: var(--bg-cream);
+
+    /* 2. As imagens das flores nos cantos (Estilo Marsala) */
+    /* Usei links de exemplo que combinam perfeitamente. 
+       Se você tiver os arquivos PNG exatos do seu designer, pode trocar as URLs */
+    background-image: 
+        /* Flor Canto Superior Esquerdo */
+        url('https://i.imgur.com/8Q6V8Zc.png'),
+        /* Flor Canto Inferior Direito */
+        url('https://i.imgur.com/0yYq4xS.png');
+
+    /* 3. Onde cada imagem fica */
+    background-position: 
+        top left,      /* Primeira imagem no topo esquerdo */
+        bottom right;  /* Segunda imagem embaixo na direita */
+
+    /* 4. Não repetir as imagens */
+    background-repeat: no-repeat, no-repeat;
+
+    /* 5. Tamanho das flores (ajuste se achar grande ou pequeno) */
+    background-size: 
+        300px auto,    /* Tamanho da primeira */
+        350px auto;    /* Tamanho da segunda */
+
+    /* 6. O PULO DO GATO: Fundo fixo! As flores não se mexem ao rolar */
+    background-attachment: fixed;
+
+    /* Configurações de fonte padrão */
+    font-family: var(--font-serif);
     color: var(--text-dark);
-    font-family: var(--font-sans);
     line-height: 1.6;
 }
 
-/* --- HERO HEADER --- */
-header {
-    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://img.freepik.com/fotos-gratis/fundo-de-textura-de-papel-branco_1083-178.jpg'); /* Textura sutil */
-    padding: 4rem 1rem;
+/* --- AJUSTE PARA CELULAR --- */
+/* No celular, as flores grandes podem atrapalhar, então diminuímos elas */
+/* --- CONFIGURAÇÃO HERO (Capa do Site) --- */
+
+/* 1. VERSÃO COMPUTADOR (Padrão) */
+.hero {
+    /* Carrega a imagem larga */
+    background-image: url('Imagens/Geral/Fundo-pc.png'); 
+    
+    /* Faz a imagem cobrir tudo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito chique: imagem parada, texto rola */
+    
+    /* Tamanho da tela */
+    width: 100%;
+    min-height: 90vh; /* 90% da altura da tela do PC */
+    
+    /* Centraliza o texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     text-align: center;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    color: var(--marsala);
+    border-bottom: 5px solid var(--rose-light);
 }
 
-.date-badge {
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    letter-spacing: 3px;
-    color: var(--primary-gold);
-    text-transform: uppercase;
+/* 2. VERSÃO CELULAR (Android/iPhone) */
+/* O site lê: "Se a tela for menor que 768 pixels..." */
+@media (max-width: 768px) {
+    .hero {
+        /* TROCA para a imagem vertical! */
+        background-image: url('Imagens/Geral/Fundo-mobile.png');
+        
+        /* Ajustes para celular */
+        background-attachment: scroll; /* No celular, fixed pode travar, melhor scroll */
+        background-position: center top; /* Foca no topo da imagem */
+        min-height: 100vh; /* Ocupa a tela inteira do celular */
+        padding: 40px 20px;
+    }
+
+    /* Ajuste o tamanho da letra para caber na tela do celular */
+    .main-title {
+        font-size: 3.5rem; /* Diminui um pouco o nome */
+        margin-top: 20px;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Camada branca por cima da foto para o texto ficar legível */
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+.date {
     display: block;
-    margin-bottom: 10px;
-}
-
-header h1 {
     font-family: var(--font-serif);
-    font-size: 3.5rem;
-    font-weight: 400;
-    color: var(--text-dark);
-    margin-bottom: 5px;
+    letter-spacing: 3px;
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
-.amp { color: var(--primary-gold); font-style: italic; }
+.main-title {
+    font-family: var(--font-cursiva);
+    font-size: 5.5rem; /* Nome bem grande */
+    font-weight: 400;
+    color: var(--marsala);
+    line-height: 1.1;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+}
+
+.amp { font-family: var(--font-serif); font-size: 2.5rem; font-style: italic; color: var(--rose-gold); }
 
 .subtitle {
-    font-family: var(--font-sans);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin-bottom: 20px;
-}
-
-.intro-text {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--text-dark);
-    max-width: 600px;
-    margin: 0 auto;
+    letter-spacing: 1px;
+    font-style: italic;
 }
 
 /* --- FILTROS --- */
 .filters {
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-}
-.filter-label { font-family: var(--font-serif); margin-right: 10px; color: var(--text-light); }
-.filter-btn {
-    background: transparent;
-    border: 1px solid #ddd;
-    padding: 8px 16px;
-    margin: 0 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    transition: all 0.3s;
-    color: var(--text-light);
-}
-.filter-btn:hover, .filter-btn.active {
-    border-color: var(--primary-gold);
-    color: var(--primary-gold);
-    background: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 40px 0;
+    padding: 0 10px;
 }
 
-/* --- GRID DE PRESENTES --- */
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--rose-gold);
+    padding: 8px 20px;
+    border-radius: 4px; /* Botões mais quadradinhos combinam com serifada */
+    cursor: pointer;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--marsala);
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--marsala);
+    color: var(--white);
+    border-color: var(--marsala);
+}
+
+/* --- GRID --- */
 main {
-    max-width: 1200px;
-    margin: 40px auto;
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 35px;
 }
 
 .card {
     background: var(--white);
-    border-radius: 8px; /* Cantos levemente arredondados */
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.03); /* Sombra super suave */
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(122, 46, 57, 0.05); /* Sombra rosada muito sutil */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.02);
     display: flex;
     flex-direction: column;
+    border-radius: 8px; /* Cantos levemente arredondados */
+    overflow: hidden;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15); /* Sombra dourada ao passar o mouse */
+    box-shadow: 0 10px 25px rgba(122, 46, 57, 0.15);
+    border-color: var(--rose-light);
 }
 
 .card-img {
     width: 100%;
     height: 220px;
-    object-fit: cover;
-    background-color: #f4f4f4;
-    border-bottom: 1px solid #f0f0f0;
+    object-fit: scale-down;
+    filter: sepia(10%); /* Filtro levemente vintage nas fotos */
+    transition: filter 0.3s;
 }
 
+.card:hover .card-img { filter: sepia(0%); }
+
 .card-content {
-    padding: 25px;
+    padding: 25px 20px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    text-align: center;
-}
-
-.card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    color: var(--text-dark);
-    margin: 10px 0;
-    min-height: 50px; /* Alinha os títulos */
 }
 
 .tag {
     font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--primary-gold);
-    font-weight: 700;
-    display: block;
-    margin-bottom: 5px;
+    letter-spacing: 2px;
+    color: var(--rose-gold);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
 .btn-presentear {
-    background-color: var(--primary-gold);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    width: 100%;
-    font-family: var(--font-sans);
-    text-transform: uppercase;
+    margin-top: auto;
+    background-color: var(--white);
+    color: var(--marsala);
+    border: 1px solid var(--marsala);
+    padding: 12px;
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
     letter-spacing: 1px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.3s;
-    margin-top: auto; /* Empurra o botão pro final */
+    transition: all 0.3s;
+    font-weight: 600;
 }
 
 .btn-presentear:hover {
-    background-color: var(--primary-gold-dark);
+    background-color: var(--marsala);
+    color: var(--white);
 }
 
-.card.reservado { opacity: 0.6; pointer-events: none; filter: grayscale(100%); }
-.card.reservado .btn-presentear { background-color: #ccc; content: "Reservado"; }
+/* Reservado */
+.card.reservado { opacity: 0.6; pointer-events: none; }
+.card.reservado .btn-presentear {
+    background: #eee; border-color: #eee; color: #999;
+}
 
 /* --- MODAL --- */
 .hidden { display: none !important; }
 .modal {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255,255,255,0.8); /* Fundo branco translúcido chique */
-    backdrop-filter: blur(5px);
+    background: rgba(122, 46, 57, 0.3); /* Fundo vinho transparente */
+    backdrop-filter: blur(4px);
     display: flex; align-items: center; justify-content: center;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .modal-content {
-    background: white;
-    padding: 0;
+    background: var(--bg-cream);
+    padding: 40px;
     width: 90%;
     max-width: 450px;
-    border-radius: 10px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-    overflow: hidden;
     text-align: center;
-    border: 1px solid #eee;
-}
-
-.modal-header {
-    background-color: var(--bg-cream);
-    padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-radius: 8px;
+    border: 2px solid var(--rose-light);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     position: relative;
 }
-.modal-header h3 { font-family: var(--font-serif); color: var(--text-dark); }
+
 .close-modal {
-    position: absolute; right: 20px; top: 20px; font-size: 24px; cursor: pointer; color: #aaa;
+    position: absolute; right: 15px; top: 10px;
+    font-size: 24px; cursor: pointer; color: var(--rose-gold);
 }
 
-.modal-body { padding: 30px; }
-.item-name-confirm {
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
-    color: var(--primary-gold);
-    margin: 15px 0 25px 0;
+.modal-title {
+    font-family: var(--font-cursiva);
+    font-size: 2.5rem;
+    color: var(--marsala);
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.item-highlight {
+    color: var(--marsala);
+    font-size: 1.2rem;
+    display: block;
+    margin: 10px 0 20px 0;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: var(--font-sans);
+    border: 1px solid #ccc;
+    background: var(--white);
+    font-family: var(--font-serif);
     margin-bottom: 20px;
     outline: none;
-    transition: border 0.3s;
 }
-input:focus { border-color: var(--primary-gold); }
+input:focus { border-color: var(--marsala); }
 
 .btn-primary {
-    background-color: var(--primary-gold);
-    color: white;
-    border: none;
-    padding: 15px 30px;
     width: 100%;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
+    background-color: var(--marsala);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
     cursor: pointer;
+    font-family: var(--font-serif);
 }
 
-/* --- MOBILE --- */
-@media (max-width: 600px) {
-    header h1 { font-size: 2.5rem; }
-    main { grid-template-columns: 1fr; }
+footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--rose-gold);
+    font-size: 0.9rem;
 }
