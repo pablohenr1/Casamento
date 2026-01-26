@@ -17,38 +17,23 @@
 body {
     /* 1. A cor de fundo sólida (o papel do convite) */
     background-color: var(--bg-cream);
-
-    /* 2. As imagens das flores nos cantos (Estilo Marsala) */
-    /* Usei links de exemplo que combinam perfeitamente. 
-       Se você tiver os arquivos PNG exatos do seu designer, pode trocar as URLs */
-  
-
     /* 3. Onde cada imagem fica */
     background-position: 
         top left,      /* Primeira imagem no topo esquerdo */
         bottom right;  /* Segunda imagem embaixo na direita */
-
     /* 4. Não repetir as imagens */
     background-repeat: no-repeat, no-repeat;
-
     /* 5. Tamanho das flores (ajuste se achar grande ou pequeno) */
     background-size: 
         300px auto,    /* Tamanho da primeira */
         350px auto;    /* Tamanho da segunda */
-
     /* 6. O PULO DO GATO: Fundo fixo! As flores não se mexem ao rolar */
     background-attachment: fixed;
-
     /* Configurações de fonte padrão */
     font-family: var(--font-serif);
     color: var(--text-dark);
     line-height: 1.6;
 }
-
-/* --- AJUSTE PARA CELULAR --- */
-/* No celular, as flores grandes podem atrapalhar, então diminuímos elas */
-/* --- CONFIGURAÇÃO HERO (Capa do Site) --- */
-
 /* 1. VERSÃO COMPUTADOR (Padrão) */
 .hero {
     /* Carrega a imagem larga */
@@ -110,7 +95,7 @@ body {
     display: block;
     font-family: var(--font-serif);
     letter-spacing: 3px;
-    font-size: 1rem;
+    font-size: 3rem;
     color: var(--text-light);
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -118,7 +103,7 @@ body {
 
 .main-title {
     font-family: var(--font-cursiva);
-    font-size: 5.5rem; /* Nome bem grande */
+    font-size: 7.5rem; /* Nome bem grande */
     font-weight: 400;
     color: var(--marsala);
     line-height: 1.1;
@@ -129,11 +114,19 @@ body {
 .amp { font-family: var(--font-serif); font-size: 2.5rem; font-style: italic; color: var(--rose-gold); }
 
 .subtitle {
-    font-size: 1.1rem;
+    font-size: 2rem;
     color: var(--text-dark);
     letter-spacing: 1px;
     font-style: italic;
 }
+
+.mensagem-intro p {
+    font-size: 2rem;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
 
 /* --- FILTROS --- */
 .filters {
