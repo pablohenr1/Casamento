@@ -53,7 +53,7 @@ btnBuscar.addEventListener("click", async () => {
             
             // Verifica se a propriedade 'membros' existe antes de tentar buscar
             if (dados.membros && Array.isArray(dados.membros)) {
-                const nomesMembros = dados.membros.map(m => m.nome.toLowerCase());
+                const nomesMembros = dados.membros.filter(m => m &&typeof m.nome === 'string').map(m=>m.nome.toLowerCase());
                 
                 // Se algum dos nomes incluir o que foi digitado, achamos o convite!
                 if (nomesMembros.some(nome => nome.includes(termo))) {
@@ -238,7 +238,7 @@ window.semearConvidados = async () => {
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Gabriel Razuk", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Arthur", "confirmado": false}, {"nome": "Thais", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Karolaine", "confirmado": false}]},
-        {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Daniel", "confirmado": false}, {"nome": "Namorada (Confirmar Nome)", "confirmado": false}]},
+        {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Daniel", "confirmado": false}, {"nome": "Thawanny", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Werlis", "confirmado": false}, {"nome": "Cassia", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Marcia", "confirmado": false}, {"nome": "Samir", "confirmado": false}, {"nome": "Ana Cecilia", "confirmado": false}, {"nome": "Izaura", "confirmado": false}, {"nome": "Julieta", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Rubineia", "confirmado": false}, {"nome": "Emanuelly", "confirmado": false}, {"nome": "Kauan", "confirmado": false}]},
@@ -285,7 +285,7 @@ window.semearConvidados = async () => {
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Giselma", "confirmado": false}, {"nome": "Cleber", "confirmado": false}, {"nome": "Miguel", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Fernando", "confirmado": false}, {"nome": "Juliana", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Iris", "confirmado": false}, {"nome": "Joao Reis", "confirmado": false}]},
-        {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Guti", "confirmado": false}, {"nome": "Natalino", "confirmado": false}, {"nome": "Natiely", "confirmado": false}]},
+        {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Sirlene", "confirmado": false}, {"nome": "Natalino", "confirmado": false}, {"nome": "Natiely", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Flavio", "confirmado": false}, {"nome": "Jordana", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Brenda", "confirmado": false}]},
         {"status_convite": "pendente", "mensagem_noivos": "", "membros": [{"nome": "Lessandro", "confirmado": false}, {"nome": "Mulher do Lessandro", "confirmado": false}, {"nome": "Filha Lessandro", "confirmado": false}]},
